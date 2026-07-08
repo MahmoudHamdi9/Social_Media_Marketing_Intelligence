@@ -2,16 +2,13 @@
 
 > **Marketing intelligence dashboard supporting data-driven marketing decisions using social media analytics and competitive benchmarking across Facebook, Instagram, and TikTok.**
 
----
-
-## ⚠️ Important Notice
-
-This is an **independent, self-initiated portfolio project**. It is **not commissioned by, affiliated with, or endorsed by** any brand referenced in the data.
-
-- All real brand names and page identifiers have been **anonymized**. Throughout this project, the two brands appear only as **GM** (primary brand — subject of analysis) and **CR** (external benchmark brand).
-- All data was collected from **public, unauthenticated social media pages** using Apify scrapers. No private, user-level, or gated data was accessed.
-- Dashboard screenshots included here are a **curated sample** with all logos and identifying names blurred.
-- The **sole purpose** of this repository is to demonstrate applied skills in data collection, Python-based ETL, data modeling, DAX development, and Power BI report design — not to publish competitive intelligence or make claims about any company's real-world performance.
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
+![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)
+![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)
+![TikTok](https://img.shields.io/badge/TikTok-000000?style=for-the-badge&logo=tiktok&logoColor=white)
 
 ---
 
@@ -23,7 +20,6 @@ The project follows a complete analytics pipeline — from data collection throu
 
 **Important framing:** the benchmark brand (CR) is used here not as a direct competitor to "beat," but as an external reference point to better understand audience behavior and identify content patterns that resonate — a learning tool for the marketing team, not a scorecard.
 
-**Total build time:** ~1 month, end-to-end.
 
 ---
 
@@ -44,24 +40,24 @@ The project follows a complete analytics pipeline — from data collection throu
 ## End-to-End Pipeline
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                                                                     │
-│   Social Platforms          Python ETL           Power BI           │
-│   (Public Pages)            Pipeline             Model & Report      │
-│                                                                     │
-│  ┌──────────────┐        ┌───────────────┐    ┌───────────────────┐ │
-│  │   Facebook   │──────▶ │  FB Cleaning  │──▶ │  Fact_Facebook    │ │
-│  │   Instagram  │──────▶ │  IG Cleaning  │──▶ │  Fact_Instagram   │ │
-│  │   TikTok     │──────▶ │  TT Cleaning  │──▶ │  Fact_TikTok      │ │
-│  └──────────────┘        └───────────────┘    │  Dim_Calendar     │ │
-│         ▲                      │              │  Dim_Brand        │ │
-│         │                      │              └────────┬──────────┘ │
-│      Apify                 Fact CSVs                   │            │
-│     Scrapers              (UTF-8 BOM)              DAX Layer        │
-│                                                        │            │
-│                                                  9-Page Report      │
-│                                                                     │
-└─────────────────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────────────────┐
+│                                                                        │
+│   Social Platforms          Python ETL           Power BI              │
+│   (Public Pages)            Pipeline             Model & Report        │
+│                                                                        │
+│  ┌──────────────┐        ┌───────────────┐      ┌───────────────────┐  │
+│  │   Facebook   │─────▶ │  FB Cleaning   │──▶  │  Fact_Facebook    │  │
+│  │   Instagram  │─────▶ │  IG Cleaning   │──▶  │  Fact_Instagram   │  │
+│  │   TikTok     │─────▶ │  TT Cleaning   │──▶  │  Fact_TikTok      │  │
+│  └──────────────┘        └────────────────┘     │  Dim_Calendar     │  │
+│         ▲                      │                │  Dim_Brand        │  │
+│         │                      │                └────────┬──────────┘  │
+│      Apify                 Fact CSVs                   │               │
+│     Scrapers              (UTF-8 BOM)              DAX Layer           │
+│                                                        │               │
+│                                                  9-Page Report         │
+│                                                                        │
+└────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -154,8 +150,8 @@ Rather than keeping a single flat table, the cleaned CSVs were loaded into a pro
                     │ Year            │
                     └────────┬────────┘
                              │ 1
-              ┌──────────────┼──────────────┐
-             *│             *│             *│
+              ┌──────────────┼───────────────────────┐
+             *│             *│                      *│
     ┌─────────────────┐  ┌──────────────────┐  ┌────────────────┐
     │  Fact_Facebook  │  │  Fact_Instagram  │  │  Fact_TikTok   │
     │─────────────────│  │──────────────────│  │────────────────│
@@ -174,7 +170,7 @@ Rather than keeping a single flat table, the cleaned CSVs were loaded into a pro
     │ Hour            │  │ Hashtags         │  │ VideoDuration  │
     └────────┬────────┘  │ Hour             │  │ Hour           │
              │           └────────┬─────────┘  └───────┬────────┘
-             └─────────────────── ┼ ─────────────────── ┘
+             └─────────────────── ┼ ───────────────────┘
                                   │ *
                          ┌────────┴────────┐
                          │   Dim_Brand     │
@@ -310,4 +306,12 @@ A small number of individual posts that happened to go viral skewed the naive "b
 
 ## About This Project
 
-This repository is an independent data analytics portfolio project built over approximately one month to demonstrate practical skills across the full analytics stack — data collection, Python-based ETL, dimensional modeling, DAX, and BI development. It is not affiliated with, commissioned by, or produced on behalf of any company named or implied in the underlying data.
+An independent portfolio project built over ~1 month to demonstrate end-to-end data analytics skills. Not affiliated with or commissioned by any company referenced in the data. All brand names are anonymized (GM / CR). Data was collected from public social media pages via Apify — no private or user-level data was accessed.
+
+## 👤 Author
+
+**Mahmoud Hamdi** — Data Analyst
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat&logo=linkedin)](https://www.linkedin.com/in/mahmoud-hamdi-analyst) [![Email](https://img.shields.io/badge/Email-Contact-EA4335?style=flat&logo=gmail)](mailto:mahmoudhamdiwm@gmail.com)
+
+---
