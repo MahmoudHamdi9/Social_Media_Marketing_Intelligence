@@ -1,4 +1,4 @@
-# Marketing Intelligence Dashboard
+# Social Media Marketing Intelligence
 
 > **Marketing intelligence dashboard supporting data-driven marketing decisions using social media analytics and competitive benchmarking across Facebook, Instagram, and TikTok.**
 
